@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "dev": "tsnd --respawn --clear src/app.ts",
+    "dev": "ts-node-dev --respawn --watch src ./src/app.ts",
     "build": "rimraf ./dist && tsc",
     "start": "npm run build && node dist/app.js"
   },
@@ -18,8 +18,11 @@
     "typescript": "^5.5.4"
   },
   "dependencies": {
+    "@types/nodemailer": "^6.4.15",
     "cron": "^3.1.7",
     "dotenv": "^16.4.5",
-    "env-var": "^7.5.0"
+    "env-var": "^7.5.0",
+    "mongoose": "^8.5.2",
+    "nodemailer": "^6.9.14"
   }
 }

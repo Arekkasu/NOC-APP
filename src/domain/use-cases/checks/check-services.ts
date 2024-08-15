@@ -21,13 +21,13 @@ export class CheckService implements CheckServiceUseCase {
       if (!req.ok) {
         throw new Error(`Error on Check Service ${url}`);
       }
-      const log: LogEntity = new LogEntity(`Server ${url} working`, LogSeverityLevel.low)
+      const log: LogEntity = new LogEntity({message: `Server ${url} working`, level: LogSeverityLevel.low, origin: "check-service-ts"})
       this.logRepository.savelog(log);
       this.succesCallback && this.succesCallback();
       return true;
     } catch (error) {
       const errorMessage = `${error}`
-      const log: LogEntity = new LogEntity(errorMessage, LogSeverityLevel.low)
+      const log: LogEntity = new LogEntity({message: errorMessage, level: LogSeverityLevel.low, origin: "check-service-ts"})
       this.logRepository.savelog(log);
 
       //MINE: OPERADOR CORTOCIRCUITO CON &&
