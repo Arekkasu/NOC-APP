@@ -23,7 +23,7 @@ export class EmailService {
 
   private transporter = nodemailer.createTransport({
     host: "smtp.gmail.com",
-    port: 587,
+    port: 465,
     service: envs.MAILER_SERVICE,
     auth: {
       user: envs.MAILER_EMAIL,
@@ -43,6 +43,7 @@ export class EmailService {
       });
       return true;
     } catch (error) {
+      console.log("Error sending email", error);
       return false;
     }
   }
